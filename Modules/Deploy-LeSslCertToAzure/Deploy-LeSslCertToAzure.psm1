@@ -76,7 +76,7 @@ Function Deploy-LeSslCertToAzure() {
         [Parameter(Mandatory=$true)]
         $dnsAlias,
         [Parameter(Mandatory=$true)]
-        $registrationEmail
+        $registrationEmail,
         [Parameter(Mandatory=$true)]
         $scriptRoot
     )
