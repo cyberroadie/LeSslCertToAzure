@@ -15,6 +15,7 @@ Import-Module -Name Deploy-LeSslCertToAzure -Verbose
 $VerbosePreference = "Continue"
 $ErrorActionPreference = 'Stop'
 
+$secPassword = convertto-securestring "appeltaart" -asplaintext -force 
 # Login-AzureRmAccount
 
 Deploy-LeSslCertToAzure `
@@ -22,9 +23,9 @@ Deploy-LeSslCertToAzure `
             -appGatewayName 'AvocadoStagingGW' `
             -appGatewayBackendHttpSettingsName 'appGatewayBackendHttpSettings' `
             -domainToCert 'avocado.staging.theagilehub.net' `
-            -certPassword convertto-securestring "appeltaart" -asplaintext -force `
+            -certPassword $secPassword`
             -azureDnsZone 'staging.theagilehub.net' `
             -azureDnsZoneResourceGroup 'shell_agile_hub-avocadodev-414086' `
             -dnsAlias 'avocadostaging' `
             -registrationEmail 'Olivier.vanAcker@shell.com'
-            -scriptRoot $scriptRoot
+            -scriptRoot 'C:\users\ContainerAdministrator\CloudDrive\LeSslCertToAzure'
