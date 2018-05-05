@@ -23,9 +23,9 @@ Deploy-LeSslCertToAzure `
             -appGatewayName 'AvocadoStagingGW' `
             -appGatewayBackendHttpSettingsName 'appGatewayBackendHttpSettings' `
             -domainToCert 'avocado.staging.theagilehub.net' `
-            -certPassword $secPassword`
+            -certPassword $secPassword `
             -azureDnsZone 'staging.theagilehub.net' `
             -azureDnsZoneResourceGroup 'shell_agile_hub-avocadodev-414086' `
             -dnsAlias 'avocadostaging' `
-            -registrationEmail 'Olivier.vanAcker@shell.com'
+            -registrationEmail 'Olivier.vanAcker@shell.com' `
             -scriptRoot 'C:\users\ContainerAdministrator\CloudDrive\LeSslCertToAzure'
