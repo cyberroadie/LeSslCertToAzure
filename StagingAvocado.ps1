@@ -29,3 +29,5 @@ Deploy-LeSslCertToAzure `
             -dnsAlias 'avocadostaging' `
             -registrationEmail 'Olivier.vanAcker@shell.com' `
             -scriptRoot 'C:\users\ContainerAdministrator\CloudDrive\LeSslCertToAzure'
+
+
