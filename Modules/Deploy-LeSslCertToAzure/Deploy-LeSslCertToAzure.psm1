@@ -90,6 +90,8 @@ Function Deploy-LeSslCertToAzure() {
     $ErrorActionPreference = 'Stop'
  
     $dnsCertAlias = $dnsAlias + "cert"
+
+    $certPassword = ConvertTo-SecureString -String $certPassword -AsPlainText -Force
  
     # Create the Host name to put the _acme-challenge. prefix on.
     # if certing www.mydomain.com, would create TXT record for _acme-challenge.www.mydomain.com.
