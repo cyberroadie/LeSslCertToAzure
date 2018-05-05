@@ -240,7 +240,7 @@ Function Deploy-LeSslCertToAzure() {
         Write-Verbose "Retrieving SSL Certificate in PKCS#12 format with full cert chain."
         # Retrieve the signed cert with Private key including chain (intermediate CA must be installed above for this to work)
         # and store it in the Pkcs#12 format.
-        Get-ACMECertificate $dnsCertAlias -ExportPkcs12 $signedSslCertificate -CertificatePassword 'appeltaart' -Overwrite
+        Get-ACMECertificate $dnsCertAlias -ExportPkcs12 $signedSslCertificate -CertificatePassword $certPassword -Overwrite
  
         ###
         # STAGE TWO - DEPLOY PFX to Azure Application Gateway
@@ -259,7 +259,7 @@ Function Deploy-LeSslCertToAzure() {
   
         # Load cert
         Write-Verbose "Adding SSL/TLS Certificate: $signedSslCertificate."
-        Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $appGateway -Name $dnsCertAlias -CertificateFile $signedSslCertificate -Password 'appeltaart'
+        Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $appGateway -Name $dnsCertAlias -CertificateFile $signedSslCertificate -Password $certPassword
         $cert = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $appGateway -Name $dnsCertAlias
         # Get frontEndIP
         $fipconfig = Get-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway $appGateway
