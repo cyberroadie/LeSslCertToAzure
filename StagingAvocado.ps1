@@ -23,7 +23,6 @@ Deploy-LeSslCertToAzure `
             -appGatewayName 'AvocadoStagingGW' `
             -appGatewayBackendHttpSettingsName 'appGatewayBackendHttpSettings' `
             -domainToCert 'avocado.staging.theagilehub.net' `
-            -certPassword "appeltaart" `
             -azureDnsZone 'staging.theagilehub.net' `
             -azureDnsZoneResourceGroup 'shell_agile_hub-avocadodev-414086' `
             -dnsAlias 'avocadostaging' `
