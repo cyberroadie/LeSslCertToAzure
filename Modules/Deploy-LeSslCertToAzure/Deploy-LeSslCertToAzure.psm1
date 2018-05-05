@@ -90,8 +90,6 @@ Function Deploy-LeSslCertToAzure() {
     $ErrorActionPreference = 'Stop'
  
     $dnsCertAlias = $dnsAlias + "cert"
-
-    $secCertPassword = ConvertTo-SecureString -String $certPassword -AsPlainText -Force | ConvertFrom-SecureString
  
     # Create the Host name to put the _acme-challenge. prefix on.
     # if certing www.mydomain.com, would create TXT record for _acme-challenge.www.mydomain.com.
@@ -261,7 +259,8 @@ Function Deploy-LeSslCertToAzure() {
   
         # Load cert
         Write-Verbose "Adding SSL/TLS Certificate: $signedSslCertificate."
-        Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $appGateway -Name $dnsCertAlias -CertificateFile $signedSslCertificate -Password 'appeltaart'
+        $password = ConvertTo-SecureString "appeltaart" -AsPlainText -Force
+        Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $appGateway -Name $dnsCertAlias -CertificateFile $signedSslCertificate -Password $password
         $cert = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $appGateway -Name $dnsCertAlias
         # Get frontEndIP
         $fipconfig = Get-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway $appGateway
