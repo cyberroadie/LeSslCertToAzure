@@ -42,6 +42,9 @@
 # The email address registred with Let's Encrypt when registering the 
 # SSL/TLS Cert.
 #
+#.PARAMETER scriptRoot
+#
+#
 #.EXAMPLE
 # Deploy-LeSslCertToAzure `
 #                -appGatewayRgName 'web-resoucegroup-rg' `
@@ -74,6 +77,8 @@ Function Deploy-LeSslCertToAzure() {
         $dnsAlias,
         [Parameter(Mandatory=$true)]
         $registrationEmail
+        [Parameter(Mandatory=$true)]
+        $scriptRoot
     )
     Set-StrictMode -Version 3
     ########################
